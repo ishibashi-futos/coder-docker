@@ -11,7 +11,7 @@ RUN yum groupinstall -y "Development Tools" \
         libmpc-devel \
         glibc-devel.i686 \
         bzip2 \
- &&     wget \
+        wget \
  && wget -qL http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz -O - | tar zxvf - -C /tmp/ --strip=1 \
  && cd /tmp/ \
  && ./contrib/download_prerequisites \
