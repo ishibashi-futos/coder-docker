@@ -9,4 +9,6 @@ stages:
 build_docker_image:
   stage: build
   script:
-    - docker build -t coder-docker:centos-latest .
+    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker build -t registry.gitlab.com/ishibashi-futos/coder-docker:centos-latest .
+    - docker push registry.gitlab.com/ishibashi-futos/coder-docker:centos-latest
