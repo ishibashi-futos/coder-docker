@@ -1,8 +1,12 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
 stages:
   - build
  
 build_docker_image:
   stage: build
-  image: docker:dind
   script:
     - docker build -t coder-docker:centos-latest .
