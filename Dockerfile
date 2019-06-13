@@ -17,7 +17,7 @@ RUN yum groupinstall -y -q "Development Tools" \
  && cd /tmp/ \
  && ./contrib/download_prerequisites \
  && mkdir build/ && cd build/ \
- && ../configure --enable-languages=c,c++ --prefix=/usr/local --disable-bootstrap --disable-multilib \
+ && ../configure --enable-languages=c,c++ --prefix=/usr/local --disable-bootstrap --disable-multilib --silent \
  && make > /dev/null 2>&1 && make install > /dev/null 2>&1 && cd / && rm -rf /tmp/** \
  && echo /usr/local/lib64 >> /etc/ld.so.conf.d/usr_local_lib64.conf \
  && mv /usr/local/lib64/libstdc++.so.6.0.25-gdb.py  /usr/local/lib64/back_libstdc++.so.6.0.25-gdb.py \
