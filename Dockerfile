@@ -3,8 +3,8 @@ FROM centos:7.6.1810
 ENV CODER_VARSION 1.1140-vsc1.33.1
 
 # install lib
-RUN yum groupinstall -y "Development Tools" \
- && yum install -y kernel-devel \
+RUN yum groupinstall -y -q "Development Tools" \
+ && yum install -y -q kernel-devel \
         kernel-headers \
         gmp-devel \
         mpfr-devel \
@@ -13,10 +13,10 @@ RUN yum groupinstall -y "Development Tools" \
         bzip2 \
         wget \
         openssl \
- && wget -qL http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz -O - | tar zxvf - -C /tmp/ --strip=1 \
+ && wget -qL http://ftp.tsukuba.wide.ad.jp/software/gcc/releases/gcc-8.3.0/gcc-8.3.0.tar.gz -O - | tar zxf - -C /tmp/ --strip=1 \
  && cd /tmp/ \
  && ./contrib/download_prerequisites \
- && mkdir build/ && cd build \
+ && mkdir build/ && cd build/ \
  && ../configure --enable-languages=c,c++ --prefix=/usr/local --disable-bootstrap --disable-multilib \
  && make > /dev/null && make install > /dev/null && cd / && rm -rf /tmp/** \
  && echo /usr/local/lib64 >> /etc/ld.so.conf.d/usr_local_lib64.conf \
